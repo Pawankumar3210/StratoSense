@@ -1,0 +1,88 @@
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "tailwindcss";
+
+/* Design tokens. Dark is the default theme; light overrides below. Palette from the brand spec. */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #071321; /* Space Navy */
+  --bg-raised: #0b1e30; /* Midnight Blue */
+  --panel: #10263a; /* Panel Navy */
+  --line: rgb(148 168 185 / 0.2);
+  --text: #f2f7fb; /* Cloud White */
+  --text-muted: #94a8b9; /* Muted Blue Grey */
+  --accent: #57d8f2; /* Ice Cyan */
+  --accent-strong: #68afff; /* Electric Sky */
+  --accent-ink: #071321; /* text on accent fills */
+  --warn: #f4b85b; /* Accent Amber */
+  --ok: #57d8f2;
+  --bad: #ff8a80;
+  --active: #10263a;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f2f7fb;
+  --bg-raised: #ffffff;
+  --panel: #ffffff;
+  --line: rgb(11 30 48 / 0.14);
+  --text: #0b1e30;
+  --text-muted: #4a6074;
+  --accent: #0b7a94;
+  --accent-strong: #1f6fd6;
+  --accent-ink: #ffffff;
+  --warn: #9a5b00;
+  --ok: #0b7a94;
+  --bad: #b3261e;
+  --active: #e3edf5;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-raised: var(--bg-raised);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-ink: var(--text);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-ink: var(--accent-ink);
+  --color-warn: var(--warn);
+  --color-ok: var(--ok);
+  --color-bad: var(--bad);
+  --color-active: var(--active);
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 1; /* tabular figures keep readouts aligned */
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
